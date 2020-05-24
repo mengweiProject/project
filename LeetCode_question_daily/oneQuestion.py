@@ -7,7 +7,7 @@
 from datetime import datetime
 from time import time
 
-def program_run_time(func):
+def run_time(func):
     def inner_func(*parm):
         begin_time = datetime.now()
         ret = func(*parm)
@@ -16,7 +16,7 @@ def program_run_time(func):
         return ret
     return inner_func
 
-@program_run_time
+@run_time
 def q1(*parm):
     """
     给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
@@ -43,9 +43,73 @@ def q1_2(*parm):
         a = hashmap.get(parm[1] - element)
         if a is not None and idx != a:
             print(idx, a)
-            return 
+            return
+
+
+@run_time
+def q2(*parm):
+    """
+    给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
+如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
+您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
+示例：
+输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
+输出：7 -> 0 -> 8
+原因：342 + 465 = 807
+    """
+    carry = 0
+    if len(parm[0]) > len(parm[1]):
+        parm[1].extend([0 for i in range(len(parm[0]) - len(parm[1]))])
+    else:
+        parm[0].extend([0 for i in range(len(parm[1]) - len(parm[0]))])
+    print(parm[0])
+    print(parm[1])
+
+    for idx in range(len(parm[0])):
+        number = parm[0][idx] + parm[1][idx] + carry
+        if number >= 10:
+            parm[0][idx] = 0 + carry
+            carry = 1
+        else:
+            parm[0][idx] = number
+            carry = 0
+        if number >= 10 and idx == len(parm[0]) - 1:
+            parm[0].extend([1])
+    print(parm[0])
+
+def q3(*parm):
+    # 给定一个字符串，请你找出其中不含有重复字符的
+    # 最长子串
+    # 的长度。
+    # 输入: "abcabcbb"
+    # 输出: 3
+    # 解释: 因为无重复字符的最长子串是
+    # "abc"，所以其长度为 3。
+    start_idx = 0
+    end_idx = 1
+    max_len = end_idx - start_idx
+    if len(parm[0]) == 1:
+        print(max_len)
+        return
+    while end_idx < len(parm[0]):
+        if parm[0][end_idx] in parm[0][start_idx: end_idx]:
+            start_idx += 1
+        else:
+            end_idx += 1
+        lens = len(parm[0][start_idx: end_idx])
+        if lens > max_len:
+            max_len = lens
+        print(parm[0][start_idx: end_idx])
+    print(max_len)
+
 
 
 
 if __name__ == '__main__':
-    q1_2([1, 2, 3, 4, 5], 9)
+    # q2([5, 5, 5, 5, 5], [5, 5, 5, 5, 5])
+    # print('*' * 10)
+    # q2([5, 5, 5], [5, 5, 5, 5, 5])
+    # print('*' * 10)
+    # q2([5, 5, 5, 5, 5], [5, 5, 5])
+    # print('*' * 10)
+    q3('abcdabcde')
