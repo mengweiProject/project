@@ -99,17 +99,32 @@ def q3(*parm):
         lens = len(parm[0][start_idx: end_idx])
         if lens > max_len:
             max_len = lens
-        print(parm[0][start_idx: end_idx])
+        # print(parm[0][start_idx: end_idx])
+    print(max_len)
+
+
+def q3_2(*parm):
+    max_len = 0
+    start_idx = 0
+    end_idx = 1
+    if len(parm[0]) > 1:
+        while end_idx <= len(parm[0]):
+            sub_set = set(parm[0][start_idx: end_idx])
+            sub_lst = parm[0][start_idx: end_idx]
+            # print(sub_set, sub_lst)
+            if len(sub_set) == len(sub_lst):
+                end_idx += 1
+            else:
+                start_idx += 1
+            if len(sub_lst) > max_len and len(sub_set) == len(sub_lst):
+                max_len = len(sub_lst)
+                # print(max_len)
     print(max_len)
 
 
 
 
 if __name__ == '__main__':
-    # q2([5, 5, 5, 5, 5], [5, 5, 5, 5, 5])
-    # print('*' * 10)
-    # q2([5, 5, 5], [5, 5, 5, 5, 5])
-    # print('*' * 10)
-    # q2([5, 5, 5, 5, 5], [5, 5, 5])
-    # print('*' * 10)
-    q3('abcdabcde')
+    q3('pwwkew')
+    q3_2('pwwkew')
+
