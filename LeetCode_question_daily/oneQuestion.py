@@ -122,9 +122,78 @@ def q3_2(*parm):
     print(max_len)
 
 
+def q4(*parm):
+    # 给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。
+    #  请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。 你可以假设 nums1 和 nums2 不会同时为空。
+    #  示例 1:
+    #  nums1 = [1, 3]
+    #  nums2 = [2]
+    #  则中位数是 2.0
+    # 示例 2:
+    #  nums1 = [1, 2]
+    #  nums2 = [3, 4]
+    #  则中位数是(2 + 3) / 2 = 2.5
+    if len(parm[0]) == 0 and len(parm[1]) == 0:
+        print('None')
+        return
+    else:
+        # print(parm[0] + parm[1])
+        l = parm[0] + parm[1]
+        l.sort()
+        print(l)
+        if len(l) % 2 != 0:
+            print(len(l) // 2)
+            median = l[len(l) // 2]
+        else:
+            print(l[(len(l) - 1) // 2], l[(len(l) + 1) // 2])
+            median = (l[(len(l) - 1) // 2] + l[(len(l) + 1) // 2]) / 2
+        print(median)
+
+
+def q4_2():
+    m = 10
+    n = 11
+    print(int((m + n) / 2))
+    # 编程语言中，取整，一般都是向下取整。如：10.5，取整为10，-10.5，取整为-11
+
+
+def q4_3(num1, num2):
+    if len(num1) > len(num2):
+        num1, num2 = num2, num1
+    # print(len(num1) % 2)
+    if len(num1) % 2 == 1:
+        m = int(len(num1) / 2 + 1)
+    else:
+        m = int(len(num1) / 2)
+    n = int((len(num1) + len(num2) + 1) / 2 - m)
+
+    while True:
+        a = max(num1[m - 1], num2[n - 1])
+        b = min(num1[m], num2[n])
+        if a > b:
+            m += 1
+            n -= 1
+        if a < b:
+            break
+    if (len(num1) + len(num2)) % 2 == 0:
+        print(a, b)
+        return (a + b) / 2
+    return a
+
+
+
+def q5(s):
+    # 给定一个字符串
+    # s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+    #  示例 1：
+    # 输入: "babad"
+    # 输出: "bab"
+    # 注意: "aba"
+    # 也是一个有效答案。
+    pass
 
 
 if __name__ == '__main__':
-    q3('pwwkew')
-    q3_2('pwwkew')
-
+    num1 = [1, 2, 5, 6, 10]
+    num2 = [3, 4, 7, 8, 9]
+    print(q4_3(num1, num2))
