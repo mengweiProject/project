@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import collections
 
 def calc_loc1():
     info_dict = {'name': ['亚瑟', '妲己', '夏侯惇', '百里守约'],
@@ -40,8 +41,22 @@ def test_df4():
                     'position': ['战士', '法师', '坦克', '射手', '坦克',  '射手']})
     print(info_df)
     print('*******************')
-    print(info_df.loc[:, 'name'][1])
+    # print(info_df.loc[:, 'name'][1])
+    print(info_df[info_df["name"] == "后裔"]["age"] * 100)
+
+
+def t_df5():
+    info_df = pd.DataFrame({"NAME": [None]})
+    # d = {"name": ""}
+    print(info_df)
+    # # s = info_df["name"] if len(info_df["name"]) > 0 else "--"
+    # s = info_df["name"] if d["name"] else "--"
+    # print(s)
+    d = info_df.iloc[0, :].to_dict()
+    ds = {}
+    print(d)
 
 
 if __name__ == '__main__':
-    print(type({}))
+    # d = collections.OrderedDict({"a": 1})
+    t_df5()
