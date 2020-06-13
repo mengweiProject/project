@@ -57,6 +57,24 @@ def t_df5():
     print(d)
 
 
+def create_df():
+    df = pd.DataFrame([{"a": 1, "b": 2, "name": "字母"},
+                       {"c": 3, "d": 4, "number": "很多"},
+                       {"e": 5, "f": 6, "order": "随机"}])
+    df2 = pd.DataFrame([{"name": "组合1", "age": "2", "time": "2018-05-06", "value": "1023", "type": "port"},
+                        {"name": "组合2", "age": "4", "time": "2017-05-06", "value": "1024", "type": "port"},
+                        {"name": "组合3", "age": "5", "time": "2016-05-06", "value": "1025", "type": "port"},
+                        {"name": "组合4", "age": "6", "time": "2015-05-06", "value": "1026", "type": "port"},
+                        {"name": "组合5", "age": "8", "time": "2014-05-06", "value": "1027", "type": "port"},
+                        {"name": "组合6", "age": "10", "time": "2013-05-06", "value": "1028", "type": "port"}],
+                       index=range(11, 17),
+                       columns=["A", "B", "C", "D", "E", "F"])
+    print(df2)
+    print(df2.index.values)
+    print(df2.index.values[0])
+    return
+
+
 if __name__ == '__main__':
     # d = collections.OrderedDict({"a": 1})
-    t_df5()
+    create_df()
