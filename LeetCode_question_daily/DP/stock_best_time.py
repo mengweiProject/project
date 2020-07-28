@@ -29,7 +29,21 @@ def calc_best_time2(arr):
     return largest_pro
 
 
+def calc_stock_time3(nav_list):
+    n = len(nav_list)
+    dp = [0] * n
+    print(dp)
+    min_v = nav_list[0]
+    for idx, v in enumerate(nav_list):
+        min_v = min(min_v, v)
+        dp[idx] = max(dp[idx], v - min_v)
+
+    return max(dp)
+
+
+
 if __name__ == '__main__':
     arr = [7, 1, 4, 5, 6, 3]
     print(calc_best_time(arr))
     print(calc_best_time2(arr))
+    print(calc_stock_time3(arr))
