@@ -362,7 +362,7 @@ def longest_sub_str(s):
     if len(s) == 0:
         return None
     elif len(s) == 1:
-        return s
+        return 1
     else:
         start_idx = 0
         max_len = 1

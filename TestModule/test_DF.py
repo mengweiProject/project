@@ -75,6 +75,159 @@ def create_df():
     return
 
 
+def test_df1():
+    df1 = pd.DataFrame([{"value1": "1", "value2": "2"},
+                        {"value1": "4", "value2": "3"},
+                        {"value1": "1", "value2": "4"},
+                        {"value1": "7", "value2": "5"}])
+    df2 = pd.DataFrame([{"value1": "1", "value2": "2"},
+                        {"value1": "4", "value2": "3"},
+                        {"value1": "1", "value2": "4"},
+                        {"value1": "7", "value2": "5"}])
+    df3 = pd.DataFrame()
+    # print(df[df["value1"] > df["value2"]])
+    # print(df.index)
+    # print(df.columns)
+    # print(df1)
+    # print(df2)
+    print(df3.append(df2))
+
+
+def test_insert():
+    l = []
+    l.insert(-1, 100)
+    print(l)
+
+
+def test_str_to_list():
+    s = "[1, 2, 3]"
+    print(type(eval(s)))
+    for i in eval(s):
+        print(i)
+
+    l = [1, 2, 3]
+    print(str(l))
+
+
+def test_list():
+    l1 = [1, 2, 3]
+    l2 = [3, 4, 5]
+    print(l1.extend(l2))
+    print(l1)
+
+# def test_df2():
+#     df = pd.DataFrame([{"id": "1", "age1": 1, "age2": 3},
+#                        {"id": "2", "age1": 1, "age2": 3},
+#                        {"id": "1", "age1": 3, "age2": 3},
+#                        {"id": "2", "age1": 1, "age2": 3},
+#                        {"id": "2", "age1": 1, "age2": 3},])
+#     # print(df.groupby(["id"]))
+#     # print(df["age2"].groupby([df["id"], df["age1"]]).sum())
+#     return df["id"].value_counts("1")
+
+
+def test_dict():
+    d = {1: "a", 2: "b"}
+    for i in d:
+        print(d)
+
+
+from datetime import datetime
+def parse_ymd(s):
+    year_s, mon_s, day_s = s.split('-')
+    return datetime(int(year_s), int(mon_s), int(day_s))
+
+# import numpy as np
+# print(np.std([1, 2, 3]))
+
+# se = pd.Series([1, 2, 3], index=["a", "b", "c"])
+# print(se[-1])
+
+def test_df2():
+    df = pd.DataFrame([{"id": "1", "age1": "1", "age2": 3},
+                       {"id": "2", "age1": "1", "age2": 3},
+                       {"id": "1", "age1": "3", "age2": 3},
+                       {"id": "2", "age1": "1", "age2": 3},
+                       {"id": "2", "age1": "1", "age2": 3},])
+
+    df1 = pd.DataFrame([{"age": 1, "name": "-1"},
+                        {"age": 1, "name": "2"},
+                        {"age": 1, "name": "-3"},
+                        {"age": 1, "name": "4"}])
+
+    df2 = pd.DataFrame([{"age": 1, "name": "0"},
+                        {"age": 1, "name": "0"},
+                        {"age": 1, "name": "0"},
+                        {"age": 1, "name": "0"}])
+
+    # print(df[df["age1"] == df["id"]])
+    print(df1["name"])
+    s = df1["name"].values <= df2["name"].values
+    print(s)
+
+
+from collections import OrderedDict
+def test_od():
+    od = OrderedDict()
+    od["a"] = 1
+    od["b"] = 2
+    od["c"] = 3
+    print(od.items())
+
+
+def test_d():
+    d = {" ": "123"}
+    print(d)
+
+def test_series():
+    d_s = pd.Series([1, 2, 3, 4], index=list("aabc"))
+    print(d_s[~d_s])
+    # print(d_s.loc[d_s.index.duplicated(keep="first")])
+
+
+def test_df5():
+    df = pd.DataFrame([{"name": "小红", "age": "123"}])
+    print(df["name"].tolist())
+    print(df[df["name"] == "小红"])
+
+
+def test_list1():
+    l = []
+    l.insert(-1, 'asdf')
+    l.insert(0, 'first')
+    print(l)
+
+
+def get_s():
+    se = pd.Series([6, 2, 3, 4, 5], index=list("abcde"))
+    print(se[se.index < "c"].idxmax())
+
+
+def test_list2():
+    l = [1, 2]
+    print(l[1:])
+
+def test_list3():
+    dt = {'index': ["10.0", 20, 30, 40], 'times': ['100', '200', '300', '400'], }
+    df = pd.DataFrame(dt)
+    df["index"] = df["index"].astype("int")
+    print(df)
+
+    # sum_int = df['index'].sum()
+    # print(sum_int)
+
+
+def test_s():
+    series1 = pd.Series([i for i in range(10)], index=list("abcdefghij"))
+    print(series1)
+    print(series1.iloc[0])
+
+
+def test_df6():
+    df = pd.DataFrame(np.arange(20).reshape(5, 4), index=[1, 3, 4, 6, 8])
+    print(df)
+    df = df.reset_index(drop=True)
+    print(df)
+
 if __name__ == '__main__':
-    # d = collections.OrderedDict({"a": 1})
-    create_df()
+    test_list3()
